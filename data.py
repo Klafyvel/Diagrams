@@ -35,3 +35,19 @@ class Element:
         pass
     def get_svg(self):
         pass
+
+class Note(Element):
+    def __init__(self, **kwargs):
+        pass
+
+class Participant(Element):
+    def __init__(self, **kwargs):
+        pass
+
+class Title(Element):
+    def __init__(self, **kwargs):
+        pass
+
+class Link(Element):
+    def __init__(self, **kwargs):
+        pass
