@@ -12,3 +12,26 @@ class Canvas:
     def get_svg(self):
         pass
 
+class Text:
+    def __init__(self, **kwargs):
+        pass
+    def get_svg(self):
+        pass
+
+class Line:
+    def __init__(self, **kwargs):
+        pass
+    def get_svg(self):
+        pass
+
+class Rect:
+    def __init__(self, **kwargs):
+        pass
+    def get_svg(self):
+        pass
+
+class Element:
+    def __init__(self, **kwargs):
+        pass
+    def get_svg(self):
+        pass
