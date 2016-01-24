@@ -53,13 +53,15 @@ class Text:
             - pos: tuple of two numbers
         :return: Text object
         """
-        pass
+        self.text = kwargs.get('text', "")
+        self.pos = kwargs.get('pos', (0,0))
+
     def get_svg(self):
         """
         Get your text as SVG.
         :return: str
         """
-        pass
+        return '<text x="{}" y="{}">{}</text>'.format(self.po[0], self.po[1], self.text)
 
 class Line:
     def __init__(self, **kwargs):
@@ -71,13 +73,15 @@ class Line:
             - end_arrow : str (">" or ">>") or None (default: None)
         :return: Line object
         """
-        pass
+        self.origin = kwargs.get('origin', (0,0))
+        self.end = kwargs.get('end', (0,0))
+
     def get_svg(self):
         """
         Get your text as SVG.
         :return: str
         """
-        pass
+        return '<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(self.origin[0], self.origin[1], self.end[0], self.end[1])
 
 class Rect:
     def __init__(self, **kwargs):
@@ -88,13 +92,15 @@ class Rect:
             - size: tuple of two numbers
         :return: Rect object
         """
-        pass
+        self.pos = kwargs.get('pos', (0,0))
+        self.size = kwargs.get('size', (0,0))
+
     def get_svg(self):
         """
         Get your text as SVG.
         :return: str
         """
-        pass
+        return '<rect width="{}" height="{}" x="{}" y="{}"/>'.format(self.size[0],self.size[1], *self.pos)
 
 class Element:
     def __init__(self, **kwargs):
