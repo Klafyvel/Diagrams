@@ -1,6 +1,29 @@
+BASIC_SVG_STYLE = """
+.Diagram line
+{
+    stroke: black;
+    stroke-width:1px;
+}
+.Diagram rect
+{
+    fill: none;
+    stroke: black;
+    stroke-width:1px;
+}
+.Diagram text
+{
+    font-size: 7px;
+}
+"""
+
 class Canvas:
     def __init__(self):
-        pass
+        """
+        The Canvas which represents the diagram.
+        :return: Canvas object
+        """
+        self.objects = []
+
     def add_participant(self, name):
         """
         Add a participant to the diagram
@@ -42,7 +65,10 @@ class Canvas:
         Get the canvas as SVG
         :return: str (The canvas as SVG)
         """
-        pass
+        svg = ""
+        for o in self.objects:
+            svg = ''.join([svg,o.get_svg(), '\n'])
+        return "<style>{}</style>\n<svg class='Diagram'>\n{}</svg>".format(BASIC_SVG_STYLE, svg)
 
 class Text:
     def __init__(self, **kwargs):
@@ -61,7 +87,7 @@ class Text:
         Get your text as SVG.
         :return: str
         """
-        return '<text x="{}" y="{}">{}</text>'.format(self.po[0], self.po[1], self.text)
+        return '<text x="{}" y="{}">{}</text>'.format(self.pos[0], self.pos[1], self.text)
 
 class Line:
     def __init__(self, **kwargs):
@@ -163,3 +189,14 @@ class Link(Element):
         :return: Link object.
         """
         pass
+
+if __name__ == '__main__':
+    r = Rect(pos=(0,0), size=(50, 80))
+    t = Text(pos=(2,5), text="Hello !")
+    l = Line(origin=(10,10), end=(30,50))
+
+    canvas = Canvas()
+    canvas.objects = [r,t,l]
+    print("<! DOCTYPE html>\n<html><body>")
+    print(canvas.get_svg())
+    print("</body></html>")
